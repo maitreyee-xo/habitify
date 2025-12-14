@@ -1,0 +1,6 @@
+/Users/maitreyee/javascript/project/habit-platform/habit-service/src/main/java/com/habitify/habitservice/HabitServiceApplication.java
+/Users/maitreyee/javascript/project/habit-platform/habit-service/src/main/java/com/habitify/habitservice/controller/HabitController.java
+/Users/maitreyee/javascript/project/habit-platform/habit-service/src/main/java/com/habitify/habitservice/dto/HabitRequest.java
+/Users/maitreyee/javascript/project/habit-platform/habit-service/src/main/java/com/habitify/habitservice/model/Habit.java
+/Users/maitreyee/javascript/project/habit-platform/habit-service/src/main/java/com/habitify/habitservice/repository/HabitRepository.java
+/Users/maitreyee/javascript/project/habit-platform/habit-service/src/main/java/com/habitify/habitservice/service/HabitService.java

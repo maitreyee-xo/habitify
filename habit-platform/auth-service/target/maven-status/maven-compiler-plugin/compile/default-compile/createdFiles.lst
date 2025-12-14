@@ -1,0 +1,9 @@
+com/habitify/authservice/dto/RegisterRequest.class
+com/habitify/authservice/AuthServiceApplication.class
+com/habitify/authservice/repository/UserRepository.class
+com/habitify/authservice/security/JwtUtil.class
+com/habitify/authservice/controller/AuthController.class
+com/habitify/authservice/security/JwtAuthFilter.class
+com/habitify/authservice/dto/LoginRequest.class
+com/habitify/authservice/security/SecurityConfig.class
+com/habitify/authservice/model/User.class

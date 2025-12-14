@@ -1,0 +1,6 @@
+com/habitify/habitservice/repository/HabitRepository.class
+com/habitify/habitservice/service/HabitService.class
+com/habitify/habitservice/HabitServiceApplication.class
+com/habitify/habitservice/dto/HabitRequest.class
+com/habitify/habitservice/model/Habit.class
+com/habitify/habitservice/controller/HabitController.class

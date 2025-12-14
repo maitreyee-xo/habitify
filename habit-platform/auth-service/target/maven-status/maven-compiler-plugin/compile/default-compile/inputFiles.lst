@@ -1,0 +1,9 @@
+/Users/maitreyee/javascript/project/habit-platform/auth-service/src/main/java/com/habitify/authservice/AuthServiceApplication.java
+/Users/maitreyee/javascript/project/habit-platform/auth-service/src/main/java/com/habitify/authservice/controller/AuthController.java
+/Users/maitreyee/javascript/project/habit-platform/auth-service/src/main/java/com/habitify/authservice/dto/LoginRequest.java
+/Users/maitreyee/javascript/project/habit-platform/auth-service/src/main/java/com/habitify/authservice/dto/RegisterRequest.java
+/Users/maitreyee/javascript/project/habit-platform/auth-service/src/main/java/com/habitify/authservice/model/User.java
+/Users/maitreyee/javascript/project/habit-platform/auth-service/src/main/java/com/habitify/authservice/repository/UserRepository.java
+/Users/maitreyee/javascript/project/habit-platform/auth-service/src/main/java/com/habitify/authservice/security/JwtAuthFilter.java
+/Users/maitreyee/javascript/project/habit-platform/auth-service/src/main/java/com/habitify/authservice/security/JwtUtil.java
+/Users/maitreyee/javascript/project/habit-platform/auth-service/src/main/java/com/habitify/authservice/security/SecurityConfig.java
