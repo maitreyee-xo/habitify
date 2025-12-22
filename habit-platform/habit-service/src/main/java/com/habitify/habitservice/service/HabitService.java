@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HabitService {
@@ -17,42 +18,43 @@ public class HabitService {
         this.habitRepository = habitRepository;
     }
 
-    public Habit createHabit(Long userId, HabitRequest request) {
-        Habit habit = new Habit(userId, request.getName(), request.getDescription());
-        return habitRepository.save(habit);
-    }
+public Habit createHabit(String username, HabitRequest request) {
+    System.out.println("DEBUG: Entered HabitService.createHabit()");
+    System.out.println("DEBUG: username = " + username);
+    System.out.println("DEBUG: request.name = " + request.getName());
+    System.out.println("DEBUG: request.description = " + request.getDescription());
 
-    public List<Habit> getUserHabits(Long userId) {
-        return habitRepository.findByUserId(userId);
-    }
+    Habit habit = new Habit(username, request.getName(), request.getDescription());
+    System.out.println("DEBUG: Habit constructed");
 
-    public Habit markHabitCompleted(Long habitId, Long userId) {
-        Habit habit = habitRepository.findById(habitId)
-                .orElseThrow(() -> new RuntimeException("Habit not found"));
+    habitRepository.save(habit);
+    System.out.println("DEBUG: Habit saved");
 
-        if (!habit.getUserId().equals(userId)) {
-            throw new RuntimeException("Not allowed");
+    return habit;
+}
+
+
+public List<Habit> getUserHabits(String username) {
+    System.out.println("SERVICE HIT, username=" + username);
+    return habitRepository.findByUsername(username);
+}
+
+
+
+    public Habit markHabitCompleted(Long habitId, String username) {
+        Optional<Habit> optionalHabit = habitRepository.findById(habitId);
+        if (optionalHabit.isPresent() && optionalHabit.get().getUserId().equals(username)) {
+            Habit habit = optionalHabit.get();
+            LocalDate today = LocalDate.now();
+            if (habit.getLastCompletedDate() == null || habit.getLastCompletedDate().plusDays(1).equals(today)) {
+                habit.setStreakCount(habit.getStreakCount() + 1);
+            } else {
+                habit.setStreakCount(1);
+            }
+            habit.setLastCompletedDate(today);
+            habitRepository.save(habit);
+            return habit;
         }
-
-        // streak logic
-        LocalDate today = LocalDate.now();
-        LocalDate yesterday = today.minusDays(1);
-
-        if (habit.getLastCompletedDate() == null) {
-            habit.setStreakCount(1);
-        } 
-        else if (habit.getLastCompletedDate().equals(yesterday)) {
-            habit.setStreakCount(habit.getStreakCount() + 1);
-        } 
-        else if (habit.getLastCompletedDate().equals(today)) {
-            // already marked today
-        } 
-        else {
-            habit.setStreakCount(1);
-        }
-
-        habit.setLastCompletedDate(today);
-
-        return habitRepository.save(habit);
+        throw new RuntimeException("Habit not found or unauthorized");
     }
 }

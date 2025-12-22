@@ -31,3 +31,12 @@ jwt:
   secret: qwqvNn/K1UT4YzgYgU4RUcRstZWmajATQuQq97joWMs=
   expirationMs: 3600000
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health  # Add others if needed, e.g., info, prometheus
+  endpoint:
+    health:
+      show-details: always  # Optional
+

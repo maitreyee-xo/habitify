@@ -4,3 +4,20 @@ server:
 spring:
   application:
     name: habit-service
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+
+jwt:
+  secret: qwqvNn/K1UT4YzgYgU4RUcRstZWmajATQuQq97joWMs=  # Match auth-service
+  expirationMs: 3600000

@@ -10,7 +10,7 @@ public class Habit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long userId; // Comes from auth-service JWT
+    private String username;
 
     private String name;
 
@@ -26,18 +26,18 @@ public class Habit {
 
     public Habit() {}
 
-    public Habit(Long userId, String name, String description) {
-        this.userId = userId;
+    public Habit(String username, String name, String description) {
+        this.username = username;
         this.name = name;
         this.description = description;
     }
 
-    // getters and setters
+    // All getters/setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public Long getUserId() { return userId; }
-    public void setUserId(Long userId) { this.userId = userId; }
+    public String getUserId() { return username; }
+    public void setUserId(String username) { this.username = username; }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }

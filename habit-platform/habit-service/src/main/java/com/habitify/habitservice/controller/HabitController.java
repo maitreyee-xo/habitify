@@ -18,22 +18,25 @@ public class HabitController {
 
     @PostMapping
     public Habit createHabit(
-            @RequestHeader("X-User-Id") Long userId,
+            @RequestAttribute("X-User-Id") String username,
             @RequestBody HabitRequest request
     ) {
-        return habitService.createHabit(userId, request);
+        return habitService.createHabit(username, request);
     }
 
-    @GetMapping
-    public List<Habit> getUserHabits(@RequestHeader("X-User-Id") Long userId) {
-        return habitService.getUserHabits(userId);
-    }
+@GetMapping
+public List<Habit> getUserHabits(
+        @RequestAttribute("X-User-Id") String username
+) {
+    System.out.println("CONTROLLER HIT, username=" + username);
+    return habitService.getUserHabits(username);
+}
 
     @PostMapping("/{habitId}/complete")
     public Habit completeHabit(
-            @RequestHeader("X-User-Id") Long userId,
+            @RequestAttribute("X-User-Id") String username,
             @PathVariable Long habitId
     ) {
-        return habitService.markHabitCompleted(habitId, userId);
+        return habitService.markHabitCompleted(habitId, username);
     }
 }
