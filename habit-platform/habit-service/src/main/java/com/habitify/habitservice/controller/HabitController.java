@@ -23,6 +23,14 @@ public class HabitController {
     ) {
         return habitService.createHabit(username, request);
     }
+    
+@DeleteMapping("/{habitId}")
+public void deleteHabit(
+        @RequestAttribute("X-User-Id") String username,
+        @PathVariable Long habitId
+) {
+    habitService.deleteHabit(habitId, username);
+}
 
 @GetMapping
 public List<Habit> getUserHabits(
@@ -34,8 +42,8 @@ public List<Habit> getUserHabits(
 
     @PostMapping("/{habitId}/complete")
     public Habit completeHabit(
-            @RequestAttribute("X-User-Id") String username,
-            @PathVariable Long habitId
+            @PathVariable Long habitId,
+            @RequestAttribute("X-User-Id") String username
     ) {
         return habitService.markHabitCompleted(habitId, username);
     }

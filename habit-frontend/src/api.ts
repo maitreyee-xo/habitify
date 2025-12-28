@@ -8,6 +8,13 @@ export const api = axios.create({
     "Content-Type": "application/json",
   },
 });
+// -------- HABIT ACTIONS --------
+export const completeHabit = (habitId: number) =>
+  api.post(`/habits/${habitId}/complete`);
+
+export const deleteHabitApi = (habitId: number) =>
+  api.delete(`/habits/${habitId}`);
+
 
 // Attach JWT automatically
 api.interceptors.request.use((config) => {

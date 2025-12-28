@@ -1,0 +1,15 @@
+.btn-primary {
+  background: var(--primary);
+  color: rgb(156, 179, 114);
+}
+
+.btn-disabled {
+  background: #3b4b62;
+  cursor: not-allowed;
+}
+
+.delete-btn {
+  background: transparent;
+  color: var(--danger);
+  font-size: 18px;
+}

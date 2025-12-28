@@ -39,22 +39,37 @@ public List<Habit> getUserHabits(String username) {
     return habitRepository.findByUsername(username);
 }
 
+public void deleteHabit(Long habitId, String username) {
+    Habit habit = habitRepository.findById(habitId)
+            .orElseThrow(() -> new RuntimeException("Habit not found"));
 
-
-    public Habit markHabitCompleted(Long habitId, String username) {
-        Optional<Habit> optionalHabit = habitRepository.findById(habitId);
-        if (optionalHabit.isPresent() && optionalHabit.get().getUserId().equals(username)) {
-            Habit habit = optionalHabit.get();
-            LocalDate today = LocalDate.now();
-            if (habit.getLastCompletedDate() == null || habit.getLastCompletedDate().plusDays(1).equals(today)) {
-                habit.setStreakCount(habit.getStreakCount() + 1);
-            } else {
-                habit.setStreakCount(1);
-            }
-            habit.setLastCompletedDate(today);
-            habitRepository.save(habit);
-            return habit;
-        }
-        throw new RuntimeException("Habit not found or unauthorized");
+    if (!habit.getUserId().equals(username)) {
+        throw new RuntimeException("Unauthorized");
     }
+
+    habitRepository.delete(habit);
+}
+
+
+public Habit markHabitCompleted(Long habitId, String username) {
+    Habit habit = habitRepository.findById(habitId)
+            .orElseThrow(() -> new RuntimeException("Habit not found"));
+
+    if (!habit.getUserId().equals(username)) {
+        throw new RuntimeException("Unauthorized");
+    }
+
+    LocalDate today = LocalDate.now();
+
+    if (habit.getLastCompletedDate() == null ||
+        habit.getLastCompletedDate().plusDays(1).equals(today)) {
+        habit.setStreakCount(habit.getStreakCount() + 1);
+    } else {
+        habit.setStreakCount(1);
+    }
+
+    habit.setLastCompletedDate(today);
+    return habitRepository.save(habit);
+}
+
 }
