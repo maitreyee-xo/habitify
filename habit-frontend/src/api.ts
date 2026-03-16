@@ -1,23 +1,29 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:8080";
+/* ---------------- BASE URLS ---------------- */
 
-export const api = axios.create({
-  baseURL: API_BASE_URL,
+const AUTH_BASE_URL = "http://localhost:8081/auth";
+const HABIT_BASE_URL = "http://localhost:8082";
+
+/* ---------------- AXIOS INSTANCES ---------------- */
+
+const authApi = axios.create({
+  baseURL: AUTH_BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
 });
-// -------- HABIT ACTIONS --------
-export const completeHabit = (habitId: number) =>
-  api.post(`/habits/${habitId}/complete`);
 
-export const deleteHabitApi = (habitId: number) =>
-  api.delete(`/habits/${habitId}`);
+const habitApi = axios.create({
+  baseURL: HABIT_BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
+/* ---------------- JWT INTERCEPTOR ---------------- */
 
-// Attach JWT automatically
-api.interceptors.request.use((config) => {
+habitApi.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
@@ -25,16 +31,24 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// -------- AUTH --------
-export const register = (username: string, password: string) =>
-  api.post("/auth/register", { username, password });
+/* ---------------- AUTH ---------------- */
 
-export const login = (username: string, password: string) =>
-  api.post("/auth/login", { username, password });
+export const login = (email: string, password: string) =>
+  authApi.post("/login", { email, password });
 
-// -------- HABITS --------
+export const register = (email: string, password: string) =>
+  authApi.post("/register", { email, password });
+
+/* ---------------- HABITS ---------------- */
+
 export const getHabits = () =>
-  api.get("/habits");
+  habitApi.get("/habits");
 
 export const createHabit = (name: string, description: string) =>
-  api.post("/habits", { name, description });
+  habitApi.post("/habits", { name, description });
+
+export const completeHabit = (habitId: number) =>
+  habitApi.post(`/habits/${habitId}/complete`);
+
+export const deleteHabitApi = (habitId: number) =>
+  habitApi.delete(`/habits/${habitId}`);

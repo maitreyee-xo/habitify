@@ -1,5 +1,7 @@
+com/habitify/habitservice/config/CorsConfig$1.class
 com/habitify/habitservice/security/JwtUtil.class
 com/habitify/habitservice/config/SecurityConfig.class
+com/habitify/habitservice/config/CorsConfig.class
 com/habitify/habitservice/HabitServiceApplication.class
 com/habitify/habitservice/dto/HabitRequest.class
 com/habitify/habitservice/repository/HabitRepository.class

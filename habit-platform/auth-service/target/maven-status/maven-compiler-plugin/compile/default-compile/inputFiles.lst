@@ -1,4 +1,5 @@
 /Users/maitreyee/javascript/project/habit-platform/auth-service/src/main/java/com/habitify/authservice/AuthServiceApplication.java
+/Users/maitreyee/javascript/project/habit-platform/auth-service/src/main/java/com/habitify/authservice/config/SecurityBeansConfig.java
 /Users/maitreyee/javascript/project/habit-platform/auth-service/src/main/java/com/habitify/authservice/controller/AuthController.java
 /Users/maitreyee/javascript/project/habit-platform/auth-service/src/main/java/com/habitify/authservice/dto/LoginRequest.java
 /Users/maitreyee/javascript/project/habit-platform/auth-service/src/main/java/com/habitify/authservice/dto/RegisterRequest.java

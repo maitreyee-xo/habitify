@@ -1,4 +1,5 @@
 /Users/maitreyee/javascript/project/habit-platform/habit-service/src/main/java/com/habitify/habitservice/HabitServiceApplication.java
+/Users/maitreyee/javascript/project/habit-platform/habit-service/src/main/java/com/habitify/habitservice/config/CorsConfig.java
 /Users/maitreyee/javascript/project/habit-platform/habit-service/src/main/java/com/habitify/habitservice/config/SecurityConfig.java
 /Users/maitreyee/javascript/project/habit-platform/habit-service/src/main/java/com/habitify/habitservice/controller/HabitController.java
 /Users/maitreyee/javascript/project/habit-platform/habit-service/src/main/java/com/habitify/habitservice/dto/HabitRequest.java

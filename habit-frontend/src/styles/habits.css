@@ -16,6 +16,8 @@
 
 .habit-name {
   font-weight: 600;
+  word-break: break-word;
+  max-width: 260px;
 }
 
 .habit-streak {

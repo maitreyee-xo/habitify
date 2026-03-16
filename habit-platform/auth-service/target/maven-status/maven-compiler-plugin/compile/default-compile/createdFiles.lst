@@ -1,4 +1,5 @@
 com/habitify/authservice/dto/RegisterRequest.class
+com/habitify/authservice/config/SecurityBeansConfig.class
 com/habitify/authservice/AuthServiceApplication.class
 com/habitify/authservice/repository/UserRepository.class
 com/habitify/authservice/security/JwtUtil.class

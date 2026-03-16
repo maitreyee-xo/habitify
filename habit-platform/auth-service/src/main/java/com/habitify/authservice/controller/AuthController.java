@@ -32,14 +32,14 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterRequest req) {
 
-        if (userRepository.existsByUsername(req.getUsername())) {
+        if (userRepository.existsByEmail(req.getEmail())) {
             return ResponseEntity.badRequest()
-                    .body(Map.of("error", "Username already exists"));
+                    .body(Map.of("error", "Email already exists"));
         }
 
         User user = new User(
                 null,
-                req.getUsername(),
+                req.getEmail(),
                 passwordEncoder.encode(req.getPassword()),
                 "USER"
         );
@@ -52,12 +52,12 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest req) {
 
-        System.out.println("🔥 LOGIN HIT: " + req.getUsername());
-
-        return userRepository.findByUsername(req.getUsername())
-                .filter(user -> passwordEncoder.matches(req.getPassword(), user.getPassword()))
+        return userRepository.findByEmail(req.getEmail())
+                .filter(user ->
+                        passwordEncoder.matches(req.getPassword(), user.getPassword())
+                )
                 .map(user -> {
-                    String token = jwtUtil.generateToken(user.getUsername());
+                    String token = jwtUtil.generateToken(user.getEmail());
                     return ResponseEntity.ok(Map.of("token", token));
                 })
                 .orElseGet(() ->
