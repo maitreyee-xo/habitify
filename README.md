@@ -76,21 +76,19 @@ It showcases real-world concepts including authentication, REST APIs, microservi
 
 ## Architecture
 
-Habitify follows a **microservice architecture**:
-
-React Frontend
-     │
-     │ Axios + JWT
-     ▼
+```
+Frontend (React + Vite)
+        │
+        │ Axios + JWT
+        ▼
 Auth Service (Spring Boot)
-Handles login, registration, and JWT generation
-     │
-     ▼
+        │
+        ▼
 Habit Service (Spring Boot)
-Handles habit CRUD operations and streak logic
-     │
-     ▼
+        │
+        ▼
 Database
+```
 
 The frontend communicates with backend services via REST APIs using Axios.
 
