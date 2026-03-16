@@ -1,5 +1,9 @@
 <h1 align="center">Habitify – Full-Stack Habit Tracker</h1>
+Demo
 
+🎥 **Watch the demo video:**
+
+https://drive.google.com/file/d/1YQUwZl9wvYqIvmeafaa3ZldB_wZSXVoZ/view
 <p align="center">
   A modern habit tracking application built with React, TypeScript, and Spring Boot microservices.
 </p>
